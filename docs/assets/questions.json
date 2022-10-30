@@ -1,0 +1,28 @@
+[
+    {
+        "qid": 1,
+        "question": "Command to create angular application <myapp>",
+        "answerOptions": ["ng create myapp", "ng new myapp", "ng new application myapp", "ng create application myapp"]
+    },
+    {
+        "qid": 2,
+        "question": "Command to create a component <home>",
+        "answerOptions": ["ng gen comp home", "ng generate home", "ng component home", "ng generate component home"]
+    },
+    {
+        "qid": 3,
+        "question": "Command to create a service <home>",
+        "answerOptions": ["ng gen ser home", "ng generate home", "ng service home", "ng generate service home"]
+    },
+
+    {
+        "qid": 4,
+        "question": "Code to display the data if value equal to 4",
+        "answerOptions": ["<span ngIf=\"value === 4\">Four</span>", "<span *ngIf=\"value === 4\">Four</span>", "<span *if=\"value === 4\">Four</span>", "<span *showIf=\"value === 4\">Four</span>"]
+    },
+    {
+        "qid": 5,
+        "question": "For template driven forms, which module needed to be import into the app.module.ts",
+        "answerOptions": ["ReactiveFormsModule", "TemplateForms", "FormsModule", "TemplateFormsModule"]
+    }
+]
