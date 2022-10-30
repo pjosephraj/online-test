@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="container-title">
+        <h1>Angular Quiz APP</h1>
+    </div>
+    <ng-container *ngIf="!showReview">
+        <div class="container-body">
+            <ng-container *ngFor="let q of questions">
+                <div *ngIf="q.qid === currentQuestionId">
+                    <div class="question">
+                        <span>{{q.qid}}: {{q.question}}</span>
+                    </div>
+                    <div class="answer-option" *ngFor="let ansOption of q.answerOptions; let idx = index;">
+                        <input type="radio" [id]="q.qid + '_' + idx" 
+                        [name]="q.qid" (click)="setAnswer(q, idx)" [checked]="q.selectedAnswer === idx">
+                        <label [for]="q.qid + '_' + idx">{{ansOption}}</label>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+        <div class="container-footer">
+            <button *ngIf="currentQuestionId !== 1" (click)="loadPrevQuestion()">Previous</button>
+            <button *ngIf="currentQuestionId !== lastQuestion?.qid" (click)="loadNextQuestion()">Next</button>
+            <button *ngIf="currentQuestionId === lastQuestion?.qid" (click)="showReview = true;">Submit</button>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="showReview">
+        <div class="container-body container-body-review">
+            <ng-container *ngFor="let q of questions">
+                <div>
+                    <div class="question">
+                        <span>{{q.qid}}: {{q.question}}</span>
+                    </div>
+                    <div class="answer-option" [ngClass]="{selected: q.selectedAnswer === idx, correct: correctAnswers.get(q.qid) === idx}" *ngFor="let ansOption of q.answerOptions; let idx = index;">
+                        <input type="radio" [name]="q.qid" [checked]="q.selectedAnswer === idx">
+                        <label>{{ansOption}}</label>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+        <div class="container-footer">
+            <button (click)="retakeQuiz()">Retake Quiz</button>
+        </div>
+    </ng-container>
+</div>
